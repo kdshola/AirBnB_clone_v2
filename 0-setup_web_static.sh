@@ -4,7 +4,7 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-sudo mkdir -p /data/web_static/releases/test/i
+sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
 printf %s "<!DOCTYPE html>

@@ -31,12 +31,12 @@ def do_deploy(archive_path):
         path = '/tmp/' + file
         put(archive_path, '/tmp/')
         run(f'sudo mkdir -p {new}')
-        run(f'sudo -xzf {file} -C {new}')
-        run(f'sudo rm {file}')
+        run(f'sudo -xzf {path} -C {new}')
+        run(f'sudo rm {path}')
         run(f'sudo mv {new}/web_static/* {new}')
         run(f'sudo rm -rf {new}/web_static')
         run(f'sudo rm -rf /data/web_static/current')
-        run(f'sudo -ls {new} /data/web_static/current')
+        run(f'sudo ln -s {new} /data/web_static/current')
         return True
     except Exception:
         return False
