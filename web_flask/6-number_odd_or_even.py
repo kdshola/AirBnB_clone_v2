@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Flask app module """
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -51,16 +51,7 @@ def print_number_h1(n):
     Args:
         n (int): number to display
     """
-    return f'''\
-<!DOCTYPE html>
-<HTML lang="en">
-    <HEAD>
-        <TITLE>HBNB</TITLE>
-    </HEAD>
-    <BODY>
-        <h1>Number: {n}</h1>
-    </BODY>
-</HTML>'''
+    return render_template('5-number.html', n=n)
 
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
@@ -69,16 +60,7 @@ def print_number_even_or_odd(n):
     Args:
     n (int): number to display
     """
-    return f'''\
-<!DOCTYPE html>
-<HTML lang="en">
-    <HEAD>
-        <TITLE>HBNB</TITLE>
-    </HEAD>
-    <BODY>
-        <h1>Number: {n} is {"even" if n % 2 == 0 else "odd"}</h1>
-    </BODY>
-</HTML>'''
+    return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == '__main__':

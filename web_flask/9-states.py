@@ -14,11 +14,19 @@ def close():
     storage.close()
 
 
-@app.route('/cities_by_states', strict_slashes=False)
+@app.route('/states', strict_slashes=False)
 def list_states():
     """ Lists all states sorted by name and all its cities"""
     states = storage.all(State).values()
-    return render_template('8-cities_by_states.html', states=states)
+    return render_template('7-states_list.html', states=states)
+
+
+@app.route('states/<id>', strict_slashes=False)
+def list_states_by_id(id):
+    """ displays a state if id matches given id """
+    for state in storage.all(State).values():
+        if state.id == id:
+            return render_template('9-states.html', state=state)
 
 
 if __name__ == 'main':
